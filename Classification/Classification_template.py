@@ -12,7 +12,7 @@ print(y)
 
 #Train and split the dataset
 from sklearn.model_selection import train_test_split
-x_train, x_test, y_train, y_test = train_test_split(x,y,test_size=0.25,random_state=1)
+x_train, x_test, y_train, y_test = train_test_split(x,y,test_size=0.25,random_state=0)
 
 #Feature Scaling
 from sklearn.preprocessing import StandardScaler
@@ -30,7 +30,7 @@ classifier.fit(x_train,y_train)
 print(classifier.predict(sc.transform([[30,87000]])))
 
 #Predicting the Test results
-y_pred = classifier.predict(sc.fit_transform(x_test))
+y_pred = classifier.predict(x_test)
 print(np.concatenate( (y_pred.reshape(len(y_pred),1), y_test.reshape(len(y_test),1)),1 ))
 
 #Confusion matrix
